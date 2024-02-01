@@ -1,8 +1,9 @@
 from sanic import Sanic
-from sanic.response import text
+from app.routes.hello_routes import HelloRoute
+from app.config import get_config
+
 
 app = Sanic("MyHelloWorldApp")
+app.config.update(get_config())
 
-@app.get("/")
-async def hello_world(request):
-    return text("Hello, world.")
+app.add_route(HelloRoute.get, '/', methods=["GET"])

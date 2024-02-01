@@ -15,6 +15,7 @@ RUN pip3 install SQLAlchemy==2.0.25
 RUN pip3 install python-dotenv==1.0.1
 RUN pip3 freeze > /hide/requirements.txt
 
+RUN apt-get install -y sudo
 RUN apt install -y git
 # RUN apt-get install -y cron
 # RUN apt-get upgrade -y cron
