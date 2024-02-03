@@ -1,7 +1,7 @@
 from sanic import Sanic
 from app.routes.hello_routes import HelloRoute
 from app.config import get_config
-from app.session import SessionCreator, Base
+# from app.session import SessionCreator, Base
 
 
 app = Sanic("Hide", config=get_config())
