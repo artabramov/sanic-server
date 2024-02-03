@@ -13,9 +13,10 @@ app.add_route(HelloRoute.get, '/', methods=["GET"])
 @app.before_server_start
 async def setup_db(app, _):
 	session_creator = SessionCreator(app.config)
+	app.ctx.session_creator = session_creator
 
 	async with session_creator.engine.begin() as conn:
-		await conn.run_sync(Base.metadata.drop_all)
+		# await conn.run_sync(Base.metadata.drop_all)
 		await conn.run_sync(Base.metadata.create_all)
 
 	# async with session_creator.get_session() as session:
@@ -32,7 +33,7 @@ async def setup_db(app, _):
 
 @app.on_request
 async def example(request):
-	# request.ctx.conn = request.app.ctx.session_creator.get_session()
+	request.ctx.session = await request.app.ctx.session_creator.get_session()
 	print("I execute before the handler.")
 
 
