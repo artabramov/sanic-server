@@ -9,13 +9,17 @@ DOTENV_FILE = "/hide/.env"
 class Dotenv(Config):
     """Config dataclass."""
 
+    LOG_LEVEL: str
+    LOG_FORMAT: str
+    LOG_FILENAME: str
+    LOG_FILESIZE: int
+    LOG_FILES_LIMIT: int
+
     POSTGRES_USERNAME: str
     POSTGRES_PASSWORD: str
     POSTGRES_HOST: str
     POSTGRES_PORT: int
     POSTGRES_DATABASE: str
-    POSTGRES_AUTOCOMMIT: bool
-    POSTGRES_AUTOFLUSH: bool
 
 
 @lru_cache

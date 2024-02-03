@@ -6,13 +6,13 @@ class HelloRoute:
 
     @staticmethod
     async def get(request):
-        # # conn = request.ctx.conn
-        # user = User("user_login", "pass_hash", "first_name", "last_name")
-        # # async with request.ctx.conn as conn:
-        # #     conn.commit()
+        # user = User("user_login1", "pass_hash", "first_name", "last_name")
+        # user.mfa_key_encrypted = "asd1"
+        # user.jti_encrypted = "asdfsdf1"
 
-        # async with request.app.ctx.pool.acquire() as conn:
-        #     async with conn.transaction():
-        #         pass
+        # request.ctx.session.add(user)
+        # await request.ctx.session.flush()
+        # await request.ctx.session.commit()
 
+        request.app.ctx.log.debug("hello, world")
         return json({"res": "Hello, world."})
