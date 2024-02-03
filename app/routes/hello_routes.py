@@ -1,5 +1,5 @@
 from sanic import json
-from app.models.user_models import User
+# from app.models.user_models import User
 
 
 class HelloRoute:
