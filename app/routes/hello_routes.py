@@ -6,13 +6,12 @@ class HelloRoute:
 
     @staticmethod
     async def get(request):
-        # user = User("user_login1", "pass_hash", "first_name", "last_name")
-        # user.mfa_key_encrypted = "asd1"
-        # user.jti_encrypted = "asdfsdf1"
+        user = User("user_login8", "pass_hash", "first_name", "last_name")
+        user.mfa_key_encrypted = "asd8"
+        user.jti_encrypted = "asdfsdf8"
 
-        # request.ctx.session.add(user)
-        # await request.ctx.session.flush()
-        # await request.ctx.session.commit()
+        await request.ctx.entity_manager.insert(user, commit=True)
+        await request.ctx.cache_manager.set(user)
 
         request.app.ctx.log.debug("hello, world")
         return json({"res": "Hello, world."})

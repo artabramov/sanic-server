@@ -1,4 +1,3 @@
-"""Provides Postgres database session object."""
 import logging
 from logging.handlers import RotatingFileHandler
 from logging import Filter

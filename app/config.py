@@ -6,6 +6,7 @@ from functools import lru_cache
 
 DOTENV_FILE = "/hide/.env"
 
+
 class Dotenv(Config):
     """Config dataclass."""
 
@@ -20,6 +21,11 @@ class Dotenv(Config):
     POSTGRES_HOST: str
     POSTGRES_PORT: int
     POSTGRES_DATABASE: str
+
+    REDIS_HOST: str
+    REDIS_PORT: int
+    REDIS_EXPIRE: int
+    REDIS_DECODE: bool
 
 
 @lru_cache
