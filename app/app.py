@@ -11,9 +11,10 @@ app.add_route(HelloRoute.get, '/', methods=["GET"])
 
 @app.before_server_start
 async def setup_db(app, _):
-	app.ctx.session_creator = SessionCreator(app.config)
-	async with app.ctx.session_creator.engine.begin() as conn:
-		await conn.run_sync(Base.metadata.create_all)
+	pass
+	# app.ctx.session_creator = SessionCreator(app.config)
+	# async with app.ctx.session_creator.engine.begin() as conn:
+	# 	await conn.run_sync(Base.metadata.create_all)
 
 
 @app.on_request
