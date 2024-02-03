@@ -4,6 +4,7 @@ import enum
 from time import time
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, BigInteger, SmallInteger, String, Enum
 from sqlalchemy.orm import relationship
+# from app.conn import Base
 from app.session import Base
 # from app.mixins.meta_mixin import MetaMixin
 from sqlalchemy.ext.hybrid import hybrid_property

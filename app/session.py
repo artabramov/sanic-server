@@ -54,28 +54,31 @@ Base = declarative_base()
 class SessionCreator:
     def __init__(self, config):
         self.config = config
-        self.engine = create_async_engine(self._get_connection_string(), echo=True, future=True)
-        self._sessionmaker = self._get_sessionmaker()
+        self.engine = self.create_engine()
 
-    def _get_connection_string(self):
+    @property
+    def connection_string(self):
         return 'postgresql+asyncpg://%s:%s@%s:%s/%s' % (
             self.config.POSTGRES_USERNAME, self.config.POSTGRES_PASSWORD, self.config.POSTGRES_HOST,
             self.config.POSTGRES_PORT, self.config.POSTGRES_DATABASE)
 
-    def _get_sessionmaker(self):
+    def async_session_generator(self):
         return sessionmaker(
             autocommit=self.config.POSTGRES_AUTOCOMMIT, autoflush=self.config.POSTGRES_AUTOFLUSH,
             bind=self.engine, class_=AsyncSession
         )
-        
+
+    def create_engine(self):
+        return create_async_engine(self.connection_string, echo=True, future=True)
+
     @asynccontextmanager
     async def get_session(self):
         try:
-            async_session = self._sessionmaker()
+            async_session = self.async_session_generator()
             async with async_session() as session:
                 yield session
 
-        except:
+        except Exception as e:
             await session.rollback()
             raise
 

@@ -17,7 +17,7 @@ launchpadlib==1.10.16
 lazr.restfulclient==0.14.4
 lazr.uri==1.0.6
 more-itertools==8.10.0
-multidict==6.0.4
+multidict==6.0.5
 oauthlib==3.2.0
 PyGObject==3.42.1
 PyJWT==2.3.0
