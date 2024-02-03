@@ -19,7 +19,7 @@ async def setup_db(app, _):
 
 @app.on_request
 async def example(request):
-	request.ctx.conn = request.app.ctx.session_creator.get_session()
+	# request.ctx.conn = request.app.ctx.session_creator.get_session()
 	print("I execute before the handler.")
 
 
