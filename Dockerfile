@@ -10,9 +10,12 @@ RUN add-apt-repository ppa:deadsnakes/ppa
 RUN apt-get install -y python3-pip
 
 RUN pip3 install sanic==23.12.1
+RUN pip3 install sanic-ext==23.12.0
+RUN pip3 install sanic-openapi==21.12.0
 RUN pip3 install asyncpg==0.29.0
 RUN pip3 install SQLAlchemy==2.0.25
 RUN pip3 install redis==5.0.1
+RUN pip3 install pydantic==2.6.0
 RUN pip3 install python-dotenv==1.0.1
 RUN pip3 freeze > /hide/requirements.txt
 

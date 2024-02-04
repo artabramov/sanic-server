@@ -10,8 +10,8 @@
                 "app.app:app",
                 "--host", "0.0.0.0",
                 "--port", "8080",
-                // "--single-process",
-                "--reload"
+                "--single-process",
+                // "--reload"
             ],
             "jinja": true,
             "justMyCode": true

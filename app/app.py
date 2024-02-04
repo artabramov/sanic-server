@@ -1,5 +1,5 @@
 from sanic import Sanic
-from app.routes.hello_routes import HelloRoute
+from app.routes.user_routes import UserRoutes
 from app.config import get_config
 from app.context import ctx
 from uuid import uuid4
@@ -11,9 +11,11 @@ from app.logger import LoggerCreator
 from app.managers.entity_manager import EntityManager
 from app.managers.cache_manager import CacheManager
 from sanic import json
+# from sanic_ext import Extend
 
-app = Sanic("Hide", config=get_config())
-app.add_route(HelloRoute.get, '/', methods=["GET"])
+app = Sanic("hide", config=get_config())
+app.add_route(UserRoutes.get, '/', methods=["GET"])
+# Extend(app)
 
 
 @app.exception(Exception)
